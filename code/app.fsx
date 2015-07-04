@@ -12,8 +12,8 @@ open FSharp.Data.Toolbox.Twitter
 // IMPORTANT
 // Register an app with Twitter at https://apps.twitter.com/app/new 
 // to get the key and secret
-let key = ""
-let secret = ""
+let key = "CoqmPIJ553Tuwe2eQgfKA"
+let secret = "dhaad3d7DreAFBPawEIbzesS1F232FnDsuWWwRTUg"
 let twitter = Twitter.AuthenticateAppOnly(key, secret)
 // ================================================
 
