@@ -1,0 +1,4 @@
+code/packages/*
+code/stanford-parser-full-*
+code/bin/*
+*.suo

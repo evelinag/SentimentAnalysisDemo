@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Twitter sentiments</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Arapey' rel='stylesheet' type='text/css'>
+    <style type="text/css">
+        body {
+            font-family: 'Arapey', serif;
+        }
+
+        h1 {
+            font-size: 300%;
+            margin: 30px 0px 30px 0px;
+        }
+
+        @media (min-width: 768px) {
+            #textBox {
+                width: 50%;
+            }
+
+            #nameBox {
+                width: 20%;
+            }
+
+            #submitBtn {
+                width: 20%;
+            }
+        }
+
+        li {
+            font-size: 13pt;
+            list-style-type: none;
+            padding: 0px;
+            margin: 0px;
+        }
+
+        ul {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        #output {
+            min-height: 300px;
+        }
+
+        h3 {
+            margin: 0px 0px 30px 0px;
+        }
+    </style>
+    <script type="text/javascript" src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript">
+        var lastID = "0";
+
+        function refresh() {
+            $.ajax({
+                type: "GET", url: "/tweets/" + lastID, dataType: "text",
+                success: function (data) {
+                    data = data + "";
+                    var breakIdx = data.indexOf("\n");
+                    lastID = data.substr(0, breakIdx);
+                    $("#output").prepend(data.substr(breakIdx + 1));
+                }
+            });
+        };
+
+        setInterval(function () { refresh(); return true; }, 1000);
+
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h1>Positive or negative?<small> Sentiment analysis of tweets</small></h1>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12" id="tweets">
+                <h3>Tweets</h3>
+                <div id="output"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

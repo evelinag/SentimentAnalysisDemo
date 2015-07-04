@@ -1,0 +1,13 @@
+source https://nuget.org/api/v2
+
+nuget FAKE
+nuget FSharp.Data.Toolbox.Twitter
+nuget FsCheck
+nuget FsLab
+nuget NUnit
+nuget NUnit.Runners
+nuget Stanford.NLP.CoreNLP
+nuget Stanford.NLP.Parser
+nuget Suave
+nuget FSharp.Data
+nuget FSharp.Compiler.Service
